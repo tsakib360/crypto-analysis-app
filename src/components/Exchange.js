@@ -29,7 +29,7 @@ const Exchange = () => {
     return (
         <div className="mt-4">
             <p className="text-white">Get BTC-to-Currency exchange rates:</p>
-            <Table striped bordered hover variant="dark">
+            <Table responsive striped bordered hover variant="dark">
                 <thead>
                     <tr>
                         <th>Name</th>
