@@ -1,17 +1,18 @@
 import React from 'react'
 import { Navbar, Container, Nav, NavDropdown } from 'react-bootstrap'
+import { NavLink } from 'react-router-dom'
 
-const Header = ({ handleCurrency, currency, handleMenu }) => {
+const Header = ({ handleCurrency, currency }) => {
     return (
         <div>
             <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
                 <Container>
-                    <Navbar.Brand onClick={() => handleMenu('market')}>Crypto Analysis</Navbar.Brand>
+                    <Navbar.Brand as={NavLink} to='/' exact>Crypto Analysis</Navbar.Brand>
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="me-auto">
-                            <Nav.Link onClick={() => handleMenu('market')}>Market</Nav.Link>
-                            <Nav.Link onClick={() => handleMenu('exchangeMenu')}>Exchange</Nav.Link>
+                            <Nav.Link as={NavLink} to='/' exact>Market</Nav.Link>
+                            <Nav.Link as={NavLink} to='/exchange' exact>Exchange</Nav.Link>
                         </Nav>
                         <Nav>
                             <NavDropdown title={currency.toUpperCase()} id="basic-nav-dropdown">
