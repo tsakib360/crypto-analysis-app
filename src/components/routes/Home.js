@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import Market from '../Market'
 import SearchInput from '../SearchInput'
 
-const Home = ({ fetchMarket, coins, currencySign }) => {
+const Home = ({ fetchMarket, coins, currencySign, pagination }) => {
 
     const [search, setSearch] = useState('')
 
@@ -30,7 +30,11 @@ const Home = ({ fetchMarket, coins, currencySign }) => {
     return (
         <div>
             <SearchInput handleChange={handleChange} />
-            <Market data={filteredCoins} currencySign={currencySign} />
+            <Market
+                data={filteredCoins}
+                currencySign={currencySign}
+                pagination={pagination}
+            />
         </div>
     )
 }

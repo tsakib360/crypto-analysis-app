@@ -4,27 +4,28 @@ import { Table } from 'react-bootstrap'
 
 const Exchange = () => {
     const [exchange, setExchange] = useState([])
+
     const fetchExchangeRate = useCallback(
         () => {
-          axios.get('https://api.coingecko.com/api/v3/exchange_rates')
-            .then(res => {
-              let exchRate = [];
-              var keys = Object.keys(res.data.rates);
-              keys.forEach(function (key) {
-                exchRate.push(res.data.rates[key]);
-              });
-              setExchange(exchRate)
-            })
-            .catch(error => console.log(error))
+            axios.get('https://api.coingecko.com/api/v3/exchange_rates')
+                .then(res => {
+                    let exchRate = [];
+                    var keys = Object.keys(res.data.rates);
+                    keys.forEach(function (key) {
+                        exchRate.push(res.data.rates[key]);
+                    });
+                    setExchange(exchRate)
+                })
+                .catch(error => console.log(error))
         }, []
-      )
+    )
 
-      useEffect(() => {
+    useEffect(() => {
 
-          fetchExchangeRate()
-    
-    
-      }, [fetchExchangeRate])
+        fetchExchangeRate()
+
+
+    }, [fetchExchangeRate])
 
     return (
         <div className="mt-4">
@@ -39,20 +40,20 @@ const Exchange = () => {
                     </tr>
                 </thead>
                 <tbody>
-                {exchange.map((item, i) => {
-                return (
-                    <tr key={i}>
-                        <td>{item.name}</td>
-                        <td>{item.unit}</td>
-                        <td>{item.value}</td>
-                        <td>{item.type}</td>
-                        </tr>
-                    
-                )
-            })}
+                    {exchange.map((item, i) => {
+                        return (
+                            <tr key={i}>
+                                <td>{item.name}</td>
+                                <td>{item.unit}</td>
+                                <td>{item.value}</td>
+                                <td>{item.type}</td>
+                            </tr>
+
+                        )
+                    })}
                 </tbody>
             </Table>
-            
+
         </div>
     )
 }
